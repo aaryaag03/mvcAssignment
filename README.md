@@ -3,7 +3,9 @@
   1) Clone the git repository using command:
   `git clone git@github.com:aaryaag03/mvcAssignment.git`
   
-  2) Install Composer:     
+  2) Set up database and enter the password for your mysql in the sample.config.php file.
+  
+  3) Install Composer:     
   a) Composer: 
      Go to the project directory(mvcAssignment)-This must be installed in the **project directory** and php7.    
   b) Then run the following commands :
