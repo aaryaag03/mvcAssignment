@@ -1,0 +1,20 @@
+{% extends "templates/default.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="/assets/adminLogin.css" />{% endblock %}
+    
+{% block body %} 
+    <h1>ENTER ADMIN DETAILS</h1>
+    <div>
+        <form action="/adminLoggedIn" method="POST">
+            <label for="">Username :</label>
+            <input type="text" name="username" class="yo">
+            <br>
+            <label for="">Password :</label>
+            <input type="password" name="password" class="yo">
+            <br>
+            <input type="submit" value="Login" class="button"/>        
+        </form>
+    </div>
+{% endblock %}

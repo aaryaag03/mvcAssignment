@@ -1,0 +1,23 @@
+{% extends "templates/default.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="/assets/adminRegister.css" />{% endblock %}
+    
+{% block body %}  
+    <h1>ENTER ADMIN DETAILS</h1>
+    <div>
+        <form action="/adminRegister" method="POST">
+            <label for="">Username :</label>
+            <input type="text" name="username" class="yo">
+            <br>
+            <label for="">Password :</label>
+            <input type="password" name="password" class="yo">
+            <br>
+            <label for="">Confirm Password :</label>
+            <input type="password" name="password1" class="yo">
+            <br>
+            <input type="submit" value="Send request to be admin" class="button"/>        
+        </form>
+    </div>
+{% endblock %}

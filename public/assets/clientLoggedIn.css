@@ -1,0 +1,47 @@
+h1{
+    padding: 20px;
+    margin: 25px auto;
+    text-align: center;
+    width: 500px;
+    border: 2px solid black;
+}
+h3{
+    margin: 20px auto;
+    text-align: center;
+    color: rgb(189, 0, 0);
+}
+body{
+    background-color: cadetblue;
+}
+.button{
+    font-size: 30px;
+    height: 80px;
+    width: 200px;
+    background-color: cadetblue;
+    border: 3px solid blanchedalmond;
+    color: blanchedalmond;
+}
+.div1{
+    display: inline-block;
+    width:500px;
+    margin: 50px 700px;
+}
+.div2{
+    margin: 0px 400px;
+    display: flex;
+    align-items: center;
+}
+.button:hover{
+    background-color: blanchedalmond;
+    color: black;
+}
+label{
+    display: inline-block;
+    font-size: 20px;
+}
+form{
+    margin: 0px 100px;
+}
+#logout,#fine {
+    margin: 0px 720px;
+}

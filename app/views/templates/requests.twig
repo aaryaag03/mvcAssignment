@@ -1,0 +1,102 @@
+{% extends "templates/default.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="/assets/index.css" />{% endblock %}
+    
+{% block body %}
+    <h1>TAKE REQUESTS:</h1>
+    <div>
+    
+        <table>
+            <tr>
+                <td><b>Client</b></td>
+                <td><b>Book</b></td>
+            </tr>
+            
+            {% for item in takeRequests %}    
+            <tr>
+                <td>
+                    {{ item.username }}
+                </td>
+                <td> 
+                    <label>
+                    {{ item.title }}
+                    </label>
+                </td>
+                <td>
+                <form action="/allowTake" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="ALLOW" class="button">
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+    <br><br><br>
+    
+    <h1>RETURN REQUESTS:</h1>
+    <div>
+
+       <table>
+            <tr>
+                <td><b>Client</b></td>
+                <td><b>Book</b></td>
+            </tr>
+            
+            {% for item in returnRequests %}    
+            <tr>
+                <td>
+                    {{ item.username }}
+                </td>
+                <td> 
+                    <label>
+                    {{ item.title }}
+                    </label>
+                </td>
+                <td>
+                <form action="/allowReturn" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="ALLOW" class="button">
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br><br><br>
+    
+    <H1>ADMIN REQUESTS:</H1>
+    <div>
+
+
+    <table>
+            <tr>
+                <td><b>USERNAME</b></td>
+            </tr>
+            
+            {% for item in adminRequests %}    
+            <tr>
+                <td>
+                    {{ item.username }}
+                </td>
+                <td>
+                <form action="/allowAdmin" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="ALLOW" class="button">
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    </div>
+    <form action="/logout" method="GET">
+    <input type="submit" onclick="location.href='/logout'"  value="LOGOUT" class="button" id="logout"/>
+    </form>
+
+ {% endblock %}

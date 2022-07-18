@@ -1,0 +1,18 @@
+{% extends "templates/default.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="/assets/index.css" />{% endblock %}
+    
+{% block body %}    
+    <H1>WELCOME TO THE LIBRARY PORTAL!</H1>
+    <div>
+        
+        
+            <form action="/clientLogin" method="GET"><input type="submit" value="Login as Client" class="button"/></form>
+            <form action="/adminLogin" method="GET"><input type="submit" value="Login as Admin" class="button" /></form>
+            <form action="/clientRegister" method="GET"><input type="submit" value="Register as Client" class="button" /></form>
+            <form action="/adminRegister" method="GET"><input type="submit" value="Register as Admin" class="button"/></form>
+        
+    </div>
+{% endblock %}
