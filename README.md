@@ -13,11 +13,16 @@
      `php -S localhost:8000`
           
 ## Features-
-   a) The Library has two portals- Client and Admin.   
-   b) Client can register, login, request to take or return a book.    
+   a) The Library has two portals- Client and Admin.
+   
+   b) Client can register, login, request to take or return a book. 
+   
    c) Clients are charged 10 ruppees fine on late return of books and the fine can also be viewed by them.
+   
    d) Client requests need to be approved by admins and they can view their pending requests as well.
+   
    e) A user can send request to be Admin.
+   
    f) Admins can login, accept or deny take/return/admin requests and also add or delete books from the library.
   
   
