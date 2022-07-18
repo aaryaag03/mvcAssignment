@@ -5,7 +5,6 @@ h1{
     width: 500px;
     border: 2px solid black;
 }
-
 body{
     background-color: cadetblue;
 }
@@ -21,14 +20,15 @@ body{
 .div1{
     display: inline-block;
     width:500px;
-    margin: 0px 500px;
+    margin: 50px 500px;
 }
+
 .button:hover{
     background-color: blanchedalmond;
     color: black;
 }
 
-#home{
+#pendingRequests{
     background-color: blanchedalmond;
     color: black;
 }

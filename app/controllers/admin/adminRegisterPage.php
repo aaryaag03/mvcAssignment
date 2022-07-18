@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-class adminRegisterPage{
+class AdminRegisterPage{
     public function get(){
         echo \View\Loader::make()->render("templates/adminRegister.twig");
     }

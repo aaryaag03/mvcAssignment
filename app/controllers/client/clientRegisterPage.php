@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-class clientRegisterPage{
+class ClientRegisterPage{
     public function get(){
         echo \View\Loader::make()->render("templates/clientRegister.twig");
     }

@@ -1,8 +1,8 @@
-{% extends "templates/default.twig" %}
+{% extends "templates/adminBase.twig" %}
 
 {% block title %} Document {% endblock %}
 
-{% block css %} <link rel="stylesheet" href="/assets/index.css" />{% endblock %}
+{% block css %} <link rel="stylesheet" href="/assets/requests.css" />{% endblock %}
     
 {% block body %}
     <h1>TAKE REQUESTS:</h1>
@@ -12,6 +12,8 @@
             <tr>
                 <td><b>Client</b></td>
                 <td><b>Book</b></td>
+                <td></td>
+                <td></td>
             </tr>
             
             {% for item in takeRequests %}    
@@ -31,6 +33,13 @@
                     <input type="submit" name="" value="ALLOW" class="button">
                 </form>
                 </td>
+                <td>
+                <form action="/denyTake" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="DENY" class="button">
+                </form>
+                </td>
             </tr>
             {% endfor %}
         </table>
@@ -45,6 +54,8 @@
             <tr>
                 <td><b>Client</b></td>
                 <td><b>Book</b></td>
+                <td></td>
+                <td></td>
             </tr>
             
             {% for item in returnRequests %}    
@@ -64,6 +75,13 @@
                     <input type="submit" name="" value="ALLOW" class="button">
                 </form>
                 </td>
+                <td>
+                <form action="/denyReturn" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="DENY" class="button">
+                </form>
+                </td>
             </tr>
             {% endfor %}
         </table>
@@ -77,6 +95,8 @@
     <table>
             <tr>
                 <td><b>USERNAME</b></td>
+                <td></td>
+                <td></td>
             </tr>
             
             {% for item in adminRequests %}    
@@ -89,6 +109,13 @@
                     <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
                     <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
                     <input type="submit" name="" value="ALLOW" class="button">
+                </form>
+                </td>
+                <td>
+                <form action="/denyAdmin" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="text" name="username" value= '{{ item.username }}' style="display:none;">
+                    <input type="submit" name="" value="DENY" class="button">
                 </form>
                 </td>
             </tr>

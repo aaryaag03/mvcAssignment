@@ -6,7 +6,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-class adminLoginPage{
+class AdminLoginPage{
     public function get(){
         echo \View\Loader::make()->render("templates/adminLogin.twig");
     }
@@ -27,7 +27,7 @@ class adminLoginPage{
             //admin gets logged in
             $_SESSION["a_username"] = $username;
             $_SESSION["a_password"] = $password;
-            $instance = new \Controller\adminLoggedInPage();
+            $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }
     }

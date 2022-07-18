@@ -1,0 +1,28 @@
+{% extends "templates/clientBase.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="/assets/clientBooks.css" /> 
+{% endblock %}
+
+{% block body %}
+    <br><br>
+    <div class="div1"> 
+        <h2>MY BOOKS ARE:</h2>
+        <table>
+            {% for item in my_books %}    
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>
+                    <form action="/returnRequest" method="post">
+                        <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                        <input type="submit" name="" value="RETURN" class="button">
+                    </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

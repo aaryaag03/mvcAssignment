@@ -1,0 +1,29 @@
+{% extends "templates/clientBase.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="/assets/clientRequests.css" /> 
+{% endblock %}
+
+{% block body %}
+
+<div class="div1"> 
+    <h2> PENDING REQUESTS:</h2>
+    
+    <table>
+        {% for item in my_requests %}  
+            <tr>
+                <td>{{ item.title }}</td>
+                {% if item.c==0 %}
+                    <td>- take request pending</td>
+                {% endif %} 
+                {% if item.c==1 %}
+                    <td>- return request pending</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+    <br><br>
+{% endblock %}

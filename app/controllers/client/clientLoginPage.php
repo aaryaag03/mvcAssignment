@@ -6,7 +6,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-class clientLoginPage{
+class ClientLoginPage{
     public function get(){
         echo \View\Loader::make()->render("templates/clientLogin.twig");
     }
@@ -27,7 +27,7 @@ class clientLoginPage{
             //Successful login
             $_SESSION["c_username"] = $username;
             $_SESSION["c_password"] = $password;
-            $instance = new \Controller\clientLoggedInPage();
+            $instance = new \Controller\ClientLoggedInPage();
             $instance->get();
         }
     }

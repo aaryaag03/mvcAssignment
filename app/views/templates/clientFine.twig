@@ -1,0 +1,12 @@
+{% extends "templates/clientBase.twig" %}
+
+{% block title %} Document {% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="/assets/clientFine.css" /> 
+{% endblock %}
+
+{% block body %}
+    <h1>you owe fine= {{ data[0].fees }}</h1>
+
+{% endblock %}

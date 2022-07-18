@@ -6,14 +6,13 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-class ClientLoggedInPage{
+class ClientRequests{
     public function get(){
         if (isset($_SESSION['c_username']) && isset($_SESSION['c_password'])) {
 
-            echo \View\Loader::make()->render("templates/clientLoggedIn.twig", array(
+            echo \View\Loader::make()->render("templates/clientRequests.twig", array(
 
-            "book_list" => \Model\Books::book_list(),
-            "username"=>($_SESSION['c_username']),
+            "my_requests" => \Model\Requests::my_requests($_SESSION['c_username']),
             ));
         }
         else

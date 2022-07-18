@@ -36,23 +36,23 @@ class Requests{
         $stmt = $db->prepare('UPDATE books SET username="" where title=?');
         $stmt->execute([$title]);
 
-        // $stmt = $db->prepare('SELECT * from dates where title=?');
-        // $stmt->execute([$title]);
-        // $rows = $stmt->fetchAll();
+        $stmt = $db->prepare('SELECT * from dates where title=? and username=?');
+        $stmt->execute([$title,$username]);
+        $rows = $stmt->fetchAll();
 
-        // $stmt = $db->prepare('SELECT * from client where username=?');
-        // $stmt->execute([$username]);
-        // $rows1 = $stmt->fetchAll();
-        // echo $rows1[0]["fees"];
-        // $rt=mktime();
-        // if($rt-$rows[0]["tt"]>60000){
-        //     ($rows1[0]["fees"] )= $rows1[0]["fees"] + 10;
-        //     $stmt = $db->prepare('UPDATE client SET fees=? where username=?');
-        //     $stmt->execute([$rows1[0]["fees"],$username]); 
-        // }
+        $stmt = $db->prepare('SELECT * from client where username=?');
+        $stmt->execute([$username]);
+        $rows1 = $stmt->fetchAll();
+        echo $rows1[0]["fees"];
+        $rt=time();
+        if($rt-$rows[0]["tt"]>60){
+            $rows1[0]["fees"] = $rows1[0]["fees"] + 10;
+            $stmt = $db->prepare('UPDATE client SET fees=? where username=?');
+            $stmt->execute([$rows1[0]["fees"],$username]); 
+        }
 
-        // $stmt = $db->prepare('DELETE from dates where title=?');
-        // $stmt->execute([$title]);
+        $stmt = $db->prepare('DELETE from dates where title=? and username=?');
+        $stmt->execute([$title, $username]);
     }
 
     public static function showTakeRequests() {
@@ -84,7 +84,10 @@ class Requests{
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);
         $stmt = $db->prepare('UPDATE books SET username=? where title=?');
-        $stmt->execute([$username,$title]);    
+        $stmt->execute([$username,$title]); 
+        $taketime=time();
+        $stmt = $db->prepare('INSERT into dates SET username=?, title=?, tt=?');
+        $stmt->execute([$username,$title,$taketime]); 
     }
 
     public function allowReturn($username,$title){
@@ -101,5 +104,25 @@ class Requests{
         $stmt->execute([$username,$title]);
         $stmt = $db->prepare('INSERT into admin values( ?, ?)');
         $stmt->execute([$username,$title]);    
+    }   
+
+    public function denyTake($username,$title){
+        $db = \DB::get_instance();
+        $stmt = $db->prepare('DELETE from r where username=? and title=?');
+        $stmt->execute([$username,$title]);
+        $stmt = $db->prepare('UPDATE books SET bool=1 where title=?');
+        $stmt->execute([$title]);    
+    }
+
+    public function denyReturn($username,$title){
+        $db = \DB::get_instance();
+        $stmt = $db->prepare('DELETE from r where username=? and title=?');
+        $stmt->execute([$username,$title]);  
+    }
+
+    public function denyAdmin($username,$title){
+        $db = \DB::get_instance();
+        $stmt = $db->prepare('DELETE from r where username=? and title=?');
+        $stmt->execute([$username,$title]);  
     }   
 }

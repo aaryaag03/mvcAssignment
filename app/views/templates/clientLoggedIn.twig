@@ -1,4 +1,4 @@
-{% extends "templates/default.twig" %}
+{% extends "templates/clientBase.twig" %}
 
 {% block title %} Document {% endblock %}
 
@@ -7,66 +7,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1>CLIENT LOGGED IN</h1>
-    <h3>you owe fine= {{ data[0].fees }}</h3>
+    <h1>Namaste {{ username }} !!
+    <br>
+    Welcome to your Dashboard</h1>
     <div class="div1">
     <h2>AVAILABLE BOOKS ARE:</h2>
     <table>
         {% for item in book_list %}     
        <tr>
            <td>{{ item.title }}</td>
+           <td>
+                <form action="/takeRequest" method="post">
+                    <input type="text" name="title" value= '{{ item.title }}' style="display:none;">
+                    <input type="submit" name="" value="TAKE" class="button">
+                </form>
+            </td>
        </tr>
        {% endfor %}
     </table>
-</div>
-    <br><br><br><br>
-<div class="div1"> 
-    <h2>MY BOOKS ARE:</h2>
+    </div>
     
-    <table>
-        {% for item in my_books %}    
-            <tr>
-                <td>{{ item.title }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-    <br><br><br><br>
-<div class="div2">
-    <form action="/takeRequest" method="POST">
-        <label for=""> Name of the book : </label>
-        <input type="text" name="bookname"><br>
-        <input type="submit"  value="TAKE" class="button"/>
-    </form>
-    <br><br>
-    <form action="/returnRequest" method="POST">
-        <label for=""> Name of the book : </label>
-        <input type="text" name="bookname"><br>
-        <input type="submit"  value="RETURN" class="button"/>
-    </form>
-</div >
 
-<div class="div1"> 
-    <h2> PENDING REQUESTS:</h2>
-    
-    <table>
-        {% for item in my_requests %}  
-            <tr>
-                <td>{{ item.title }}</td>
-                {% if item.c==0 %}
-                    <td>- take request pending</td>
-                {% endif %} 
-                {% if item.c==1 %}
-                    <td>- return request pending</td>
-                {% endif %}
-            </tr>
-            
-        {% endfor %}
-    </table>
-</div>
-    <br><br>
-    <form action="/logout" method="GET">
-    <input type="submit" value="LOGOUT" class="button" id="logout"/>
-    </form>
-
+   
 {% endblock %}

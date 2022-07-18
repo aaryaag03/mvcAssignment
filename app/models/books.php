@@ -27,7 +27,7 @@ class Books{
         return $rows;
     }
 
-    public static function is_book_in_lib($title) {
+    public static function is_book_in_library($title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from books where title=?');
         $stmt->execute([$title]);
