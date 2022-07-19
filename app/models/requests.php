@@ -19,38 +19,54 @@ class Requests{
         $stmt->execute([$username , $password]);
     }
 
-    public static function take_request($username,$title) {
+    public static function take_request_set_r($username,$title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into r values( ?, ?, 0)');
         $stmt->execute([$username , $title]);
-        $stmt = $db->prepare('UPDATE books SET bool= 0 where title=?');
-        $stmt->execute([$title]);
-        
     }
 
-    public static function return_request($username,$title) {
+    public static function take_request_set_books($title) {
+        $db = \DB::get_instance();
+        $stmt = $db->prepare('UPDATE books SET bool= 0 where title=?');
+        $stmt->execute([$title]);
+    }
+
+    public static function return_request_set_r($username,$title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into r values( ?, ?, 1)');
         $stmt->execute([$username , $title]);
+    }
 
+    public static function return_request_set_books($title) {
+        $db = \DB::get_instance();
         $stmt = $db->prepare('UPDATE books SET username="" where title=?');
         $stmt->execute([$title]);
+    }
 
+    public static function return_request_take_time($username,$title) {
+        $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from dates where title=? and username=?');
         $stmt->execute([$title,$username]);
         $rows = $stmt->fetchAll();
+        return $rows;
+    }
 
+    public static function return_request_current_fees($username) {
+        $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from client where username=?');
         $stmt->execute([$username]);
-        $rows1 = $stmt->fetchAll();
-        echo $rows1[0]["fees"];
-        $rt=time();
-        if($rt-$rows[0]["tt"]>60){
-            $rows1[0]["fees"] = $rows1[0]["fees"] + 10;
-            $stmt = $db->prepare('UPDATE client SET fees=? where username=?');
-            $stmt->execute([$rows1[0]["fees"],$username]); 
-        }
+        $rows = $stmt->fetchAll();
+        return $rows;
+    }
 
+    public static function return_request_final_fees($finalFees,$username) {
+        $db = \DB::get_instance();
+        $stmt = $db->prepare('UPDATE client SET fees=? where username=?');
+        $stmt->execute([$finalFees,$username]);
+    }
+
+    public static function return_request_delete($username,$title) {
+        $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from dates where title=? and username=?');
         $stmt->execute([$title, $username]);
     }
@@ -81,40 +97,37 @@ class Requests{
 
     public function allow_take($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('DELETE from r where username=? and title=?');
-        $stmt->execute([$username,$title]);
         $stmt = $db->prepare('UPDATE books SET username=? where title=?');
         $stmt->execute([$username,$title]); 
-        $taketime=time();
-        $stmt = $db->prepare('INSERT into dates SET username=?, title=?, tt=?');
-        $stmt->execute([$username,$title,$taketime]); 
     }
 
-    public function allow_return($username,$title){
+    public function allow_take_set_time($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('DELETE from r where username=? and title=?');
-        $stmt->execute([$username,$title]);
+        $taketime=time();
+        $stmt = $db->prepare('INSERT into dates SET username=?, title=?, tt=?');
+        $stmt->execute([$username,$title,$taketime]);
+
+    }
+
+    public function allow_return($title){
+        $db = \DB::get_instance();
         $stmt = $db->prepare('UPDATE books SET username="",bool=1 where title=?');
         $stmt->execute([$title]);    
     }
 
     public function allow_admin($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('DELETE from r where username=? and title=?');
-        $stmt->execute([$username,$title]);
         $stmt = $db->prepare('INSERT into admin values( ?, ?)');
         $stmt->execute([$username,$title]);    
     }   
 
     public function deny_take($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('DELETE from r where username=? and title=?');
-        $stmt->execute([$username,$title]);
         $stmt = $db->prepare('UPDATE books SET bool=1 where title=?');
         $stmt->execute([$title]);    
     }
 
-    public function deny_return($username,$title){
+    public function delete_request($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);  

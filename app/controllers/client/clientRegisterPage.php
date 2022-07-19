@@ -16,7 +16,7 @@ class ClientRegisterPage{
 
         if($password1 != $password ){
             //if passwords are not identical
-            echo "PASSWORDS NOT IDENTICAL";
+            echo "<h3>PASSWORDS NOT IDENTICAL</h3>";
             echo \View\Loader::make()->render("templates/clientRegister.twig");
         }
         else{
@@ -24,7 +24,7 @@ class ClientRegisterPage{
             
             //if username is already taken
             if($client != null){
-                echo "USERNAME TAKEN";
+                echo "<h3>USERNAME TAKEN</h3>";
                 echo \View\Loader::make()->render("templates/clientRegister.twig");
 
             }
@@ -32,7 +32,7 @@ class ClientRegisterPage{
             else{
                 $password = hash("sha256",$password);
                 \Model\Login::register_client($username,$password);
-                echo "CLIENT REGISTERED";
+                echo "<h3>CLIENT REGISTERED</h3>";
                 echo \View\Loader::make()->render("templates/clientLogin.twig");
             }
         }

@@ -7,15 +7,15 @@
   
   3) Install Composer:     
   a) Composer: 
-     Go to the project directory(mvcAssignment)-This must be installed in the **project directory** and php7.    
+     Go to the project directory(*mvcAssignment*)-and install php7.    
   b) Then run the following commands :
     `composer install`    
     `composer dumpautoload`  
-  c) Then move into the public folder in the project directory and run:
+  c) Then move into the *public* folder in the project directory and run:
      `php -S localhost:8000`
           
 ## Features-
-   a) The Library has two portals- Client and Admin.
+   a) The Library has two portals- *Client* and *Admin*.
    
    b) Client can register, login, request to take or return a book. 
    

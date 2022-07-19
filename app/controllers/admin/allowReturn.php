@@ -12,7 +12,8 @@ class AllowReturn{
     public function post(){
         $title=$_POST["title"];
         $username=$_POST["username"];
-        \Model\Requests::allow_return($username,$title);
+        \Model\Requests::delete_request($username,$title);
+        \Model\Requests::allow_return($title);
         $instance = new \Controller\ViewRequests();
         $instance->post();
     }

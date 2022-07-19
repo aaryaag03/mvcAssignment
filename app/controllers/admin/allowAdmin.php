@@ -12,6 +12,7 @@ class AllowAdmin{
     public function post(){
         $title=$_POST["title"];
         $username=$_POST["username"];
+        \Model\Requests::delete_request($username,$title);
         \Model\Requests::allow_admin($username,$title);
         $instance = new \Controller\ViewRequests();
         $instance->post();
