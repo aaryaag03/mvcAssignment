@@ -8,6 +8,7 @@ if(!isset($_SESSION)){
 
 class ClientBooks{
     public function get(){
+        //renders page for client to view the books they own
         if (isset($_SESSION['c_username']) && isset($_SESSION['c_password'])) {
 
             echo \View\Loader::make()->render("templates/clientBooks.twig", array(

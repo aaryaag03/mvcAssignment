@@ -13,13 +13,13 @@ class Requests{
 
     //c=0 for take requests, c=1 for return requests, c=2 for admin requests
 
-    public static function requestAdmin($username,$password) {
+    public static function request_admin($username,$password) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into r values( ?, ?, 2)');
         $stmt->execute([$username , $password]);
     }
 
-    public static function takeRequest($username,$title) {
+    public static function take_request($username,$title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into r values( ?, ?, 0)');
         $stmt->execute([$username , $title]);
@@ -28,7 +28,7 @@ class Requests{
         
     }
 
-    public static function returnRequest($username,$title) {
+    public static function return_request($username,$title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into r values( ?, ?, 1)');
         $stmt->execute([$username , $title]);
@@ -55,7 +55,7 @@ class Requests{
         $stmt->execute([$title, $username]);
     }
 
-    public static function showTakeRequests() {
+    public static function show_take_requests() {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from r where c=0');
         $stmt->execute();
@@ -63,7 +63,7 @@ class Requests{
         return $rows;
     }
 
-    public static function showReturnRequests() {
+    public static function show_return_requests() {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from r where c=1');
         $stmt->execute();
@@ -71,7 +71,7 @@ class Requests{
         return $rows;
     }
 
-    public static function showAdminRequests() {
+    public static function show_admin_requests() {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from r where c=2');
         $stmt->execute();
@@ -79,7 +79,7 @@ class Requests{
         return $rows;
     }
 
-    public function allowTake($username,$title){
+    public function allow_take($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);
@@ -90,7 +90,7 @@ class Requests{
         $stmt->execute([$username,$title,$taketime]); 
     }
 
-    public function allowReturn($username,$title){
+    public function allow_return($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);
@@ -98,7 +98,7 @@ class Requests{
         $stmt->execute([$title]);    
     }
 
-    public function allowAdmin($username,$title){
+    public function allow_admin($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);
@@ -106,7 +106,7 @@ class Requests{
         $stmt->execute([$username,$title]);    
     }   
 
-    public function denyTake($username,$title){
+    public function deny_take($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);
@@ -114,13 +114,13 @@ class Requests{
         $stmt->execute([$title]);    
     }
 
-    public function denyReturn($username,$title){
+    public function deny_return($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);  
     }
 
-    public function denyAdmin($username,$title){
+    public function deny_admin($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from r where username=? and title=?');
         $stmt->execute([$username,$title]);  

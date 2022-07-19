@@ -51,13 +51,13 @@ class Books{
         return $rows;
     }
 
-    public static function addBook($title) {
+    public static function add_book($title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into books values(? , 1, "")');
         $stmt->execute([$title]);
     }
 
-    public static function dropBook($title) {
+    public static function drop_book($title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('DELETE from books where title=?');
         $stmt->execute([$title]);

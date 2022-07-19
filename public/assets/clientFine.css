@@ -1,12 +1,17 @@
 
 h1{
-    margin: 100px auto;
+    margin: 200px auto;
+    padding: 20px;
     text-align: center;
-    color: rgb(189, 0, 0);
+    width: 500px;
+    color:black;
+    border: 2px solid black;
 }
+
 body{
     background-color: cadetblue;
 }
+
 #clientFine{
     background-color: blanchedalmond;
     color: black;

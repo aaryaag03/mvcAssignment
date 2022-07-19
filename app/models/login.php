@@ -3,7 +3,7 @@
 namespace Model;
 
 class Login{
-    public static function verifyClient($username,$password) {
+    public static function verify_client($username,$password) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from client where username = ? and password = ? ');
         $stmt->execute([$username , $password]);
@@ -11,7 +11,7 @@ class Login{
         return $rows;
     }
 
-    public static function verifyAdmin($username,$password) {
+    public static function verify_admin($username,$password) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from admin where username = ? and password = ? ');
         $stmt->execute([$username , $password]);
@@ -19,7 +19,7 @@ class Login{
         return $rows;
     }
 
-    public static function returnClient($username) {
+    public static function return_client($username) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from client where username = ? ');
         $stmt->execute([$username]);
@@ -27,7 +27,7 @@ class Login{
         return $rows;
     }
 
-    public static function returnAdmin($username) {
+    public static function return_admin($username) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from admin where username = ?');
         $stmt->execute([$username]);
@@ -35,13 +35,13 @@ class Login{
         return $rows;
     }
 
-    public static function registerClient($username,$password) {
+    public static function register_client($username,$password) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into client values( ? , ? , 0) ');
         $stmt->execute([$username , $password]);
     }
 
-    public static function registerAdmin($username,$password) {
+    public static function register_admin($username,$password) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into admin values( "?" , "?" )');
         $stmt->execute([$username , $password]);

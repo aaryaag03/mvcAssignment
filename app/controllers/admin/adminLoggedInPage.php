@@ -6,6 +6,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
+//renders homepage of admin
+
 class AdminLoggedInPage{
     public function get(){
         if (isset($_SESSION['a_username']) && isset($_SESSION['a_password'])) {

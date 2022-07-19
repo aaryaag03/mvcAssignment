@@ -3,10 +3,12 @@
 namespace Controller;
 
 class AdminRegisterPage{
+    //renders the register page
     public function get(){
         echo \View\Loader::make()->render("templates/adminRegister.twig");
     }
 
+    //sends admin request if registration details are valid
     public function post(){
         $username = $_POST["username"];
         $password = $_POST["password"];
@@ -18,16 +20,18 @@ class AdminRegisterPage{
             echo \View\Loader::make()->render("templates/adminRegister.twig");
         }
         else{
-            $admin=\Model\Login::returnAdmin($username);
-            //if username is taken
+            $admin=\Model\Login::return_admin($username);
+            
+            //if username is already taken
             if($admin != null){
                 echo "USERNAME TAKEN";
                 echo \View\Loader::make()->render("templates/adminRegister.twig");
 
             }
+            //else request sent successfully
             else{
                 $password = hash("sha256",$password);
-                \Model\Requests::requestAdmin($username,$password);
+                \Model\Requests::request_admin($username,$password);
                 echo "REQUEST SENT";
                 echo \View\Loader::make()->render("templates/adminLogin.twig");
             }

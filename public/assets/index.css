@@ -1,21 +1,44 @@
-h1{
-    margin-top: 200px;
-    text-align: center;
+@keyframes typewriter {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
 }
 
-.dropbtn {
-    font-size: 30px;
-    height: 80px;
-    width: 300px;
-    background-color: blanchedalmond;
-    color: black;
-    margin:0px 20px;
-    border: none;
+@keyframes appear {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
 }
+
+h1{
+    margin: 180px auto 20px auto;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 3.5s steps(40, end) infinite, blinker .75s step-end infinite;
+}
+
+
   
 .dropdown {
     position: relative;
     display: inline-block;
+    pointer-events: auto;
+    animation-delay: 2s;
+    visibility: hidden;
+    animation-name: appear;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 
 .dropdown-content {
@@ -34,11 +57,17 @@ h1{
     display: block;
 }
 
-.dropdown-content form:hover {background-color: #ddd;}
+.dropdown-content form:hover {
+    background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: rgb(219, 180, 123);}
+.dropdown:hover .dropbtn {
+    background-color: rgb(219, 180, 123);
+}
 
 
 form{
@@ -65,4 +94,16 @@ div{
 .button:hover{
     background-color: blanchedalmond;
     color: black;
+}
+
+.dropbtn {
+    font-size: 30px;
+    height: 80px;
+    width: 300px;
+    background-color: blanchedalmond;
+    color: black;
+    margin:0px 20px;
+    border: none;
+    
+    
 }

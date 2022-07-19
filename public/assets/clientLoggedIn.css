@@ -10,10 +10,11 @@ body{
     background-color: cadetblue;
 }
 .button{
-    font-size: 30px;
-    height: 60px;
-    width: 150px;
+    font-size: 20px;
+    height: 50px;
+    width: 100px;
     margin: 5px 10px;
+    padding: 0;
     background-color: cadetblue;
     border: 3px solid blanchedalmond;
     color: blanchedalmond;
@@ -21,7 +22,8 @@ body{
 .div1{
     display: inline-block;
     width:500px;
-    margin: 0px 500px;
+    text-align: center;
+    margin: 0px 350px;
 }
 .button:hover{
     background-color: blanchedalmond;

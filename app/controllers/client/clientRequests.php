@@ -8,6 +8,7 @@ if(!isset($_SESSION)){
 
 class ClientRequests{
     public function get(){
+        //renders page for client to view their pending requests
         if (isset($_SESSION['c_username']) && isset($_SESSION['c_password'])) {
 
             echo \View\Loader::make()->render("templates/clientRequests.twig", array(
