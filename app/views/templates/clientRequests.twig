@@ -16,10 +16,10 @@
             <tr>
                 <td>{{ item.title }}</td>
                 {% if item.c==0 %}
-                    <td>- take request pending</td>
+                    <td>Take request pending</td>
                 {% endif %} 
                 {% if item.c==1 %}
-                    <td>- return request pending</td>
+                    <td>Return request pending</td>
                 {% endif %}
             </tr>
         {% endfor %}

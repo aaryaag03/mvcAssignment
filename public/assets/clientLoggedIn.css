@@ -21,9 +21,9 @@ body{
 }
 .div1{
     display: inline-block;
-    width:500px;
+    width:600px;
     text-align: center;
-    margin: 0px 350px;
+    margin: 10px 180px;
 }
 .button:hover{
     background-color: blanchedalmond;

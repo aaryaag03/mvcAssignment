@@ -19,26 +19,10 @@ class Books{
         return $rows;
     }
 
-    public static function is_book_available($title) {
-        $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from books where bool=1 and title=?');
-        $stmt->execute([$title]);
-        $rows = $stmt->fetchAll();
-        return $rows;
-    }
-
     public static function is_book_in_library($title) {
         $db = \DB::get_instance();
         $stmt = $db->prepare('SELECT * from books where title=?');
         $stmt->execute([$title]);
-        $rows = $stmt->fetchAll();
-        return $rows;
-    }
-
-    public static function is_book_mine($username,$title) {
-        $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from books where title=? and username=? ');
-        $stmt->execute([$title, $username]);
         $rows = $stmt->fetchAll();
         return $rows;
     }

@@ -22,7 +22,7 @@ class AdminLoginPage{
 
         if($admin == null){
             //if admin has not registered or if password/username is incorrect
-            echo "YOU ARE NOT AN ADMIN.";
+            echo "<h3>YOU ARE NOT AN ADMIN.</h3>";
             echo \View\Loader::make()->render("templates/adminLogin.twig");
         }
         else{

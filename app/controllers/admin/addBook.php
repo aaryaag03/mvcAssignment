@@ -15,7 +15,7 @@ class AddBook{
 
         //check if book is already in the library
         if($data!=null){
-            echo "book already in library";
+            echo " <h3>book already in library</h3>";
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

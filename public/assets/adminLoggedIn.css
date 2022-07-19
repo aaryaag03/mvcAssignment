@@ -5,6 +5,9 @@ h1{
     width: 500px;
     border: 2px solid black;
 }
+h3{
+    text-align: center;
+}
 body{
     background-color: cadetblue;
 }
@@ -26,7 +29,7 @@ body{
     justify-content: center;
 }
 .div2{
-    margin: 0px 400px;
+    margin: 0px 200px;
     display: flex;
     align-items: center;
 }

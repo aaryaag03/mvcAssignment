@@ -15,7 +15,7 @@ class DropBook{
 
         //if the book does not exist in the library, it can't be deleted
         if($data==null){
-            echo "no such book";
+            echo "<h3>no such book<h3>";
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

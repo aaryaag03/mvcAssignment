@@ -11,19 +11,10 @@ if(!isset($_SESSION)){
 class TakeRequest{
     public function post(){
         $title=$_POST["title"];
-        $data=\Model\Books::is_book_available($title);
-
-        //checks if book is in library, only then take request can be made
-
-        if($data==null){
-            echo "book not in library";
-            $instance = new \Controller\ClientLoggedInPage();
-            $instance->get();
-        }
-        else{
-            \Model\Requests::take_request($_SESSION['c_username'],$title);
-            $instance = new \Controller\ClientLoggedInPage();
-            $instance->get();
-        }
+    
+        \Model\Requests::take_request($_SESSION['c_username'],$title);
+        $instance = new \Controller\ClientLoggedInPage();
+        $instance->get();
+    
     } 
 }

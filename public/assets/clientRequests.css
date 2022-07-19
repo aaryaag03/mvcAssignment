@@ -11,9 +11,9 @@ body{
 
 .div1{
     display: inline-block;
-    width:500px;
+    width:700px;
     text-align: center;
-    margin: 50px 400px;
+    margin: 10px 130px;
 }
 
 .button:hover{
