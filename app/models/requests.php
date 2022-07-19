@@ -5,7 +5,7 @@ namespace Model;
 class Requests{
     public static function my_requests($username) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from r where username = ?');
+        $stmt = $db->prepare('SELECT title,c from r where username = ?');
         $stmt->execute([$username]);
         $rows = $stmt->fetchAll();
         return $rows;
@@ -45,7 +45,7 @@ class Requests{
 
     public static function return_request_take_time($username,$title) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from dates where title=? and username=?');
+        $stmt = $db->prepare('SELECT tt from dates where title=? and username=?');
         $stmt->execute([$title,$username]);
         $rows = $stmt->fetchAll();
         return $rows;
@@ -53,7 +53,7 @@ class Requests{
 
     public static function return_request_current_fees($username) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from client where username=?');
+        $stmt = $db->prepare('SELECT fees from client where username=?');
         $stmt->execute([$username]);
         $rows = $stmt->fetchAll();
         return $rows;
@@ -73,7 +73,7 @@ class Requests{
 
     public static function show_take_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from r where c=0');
+        $stmt = $db->prepare('SELECT username,title from r where c=0');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
@@ -81,7 +81,7 @@ class Requests{
 
     public static function show_return_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from r where c=1');
+        $stmt = $db->prepare('SELECT username,title from r where c=1');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
@@ -89,7 +89,7 @@ class Requests{
 
     public static function show_admin_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT * from r where c=2');
+        $stmt = $db->prepare('SELECT username,title from r where c=2');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
