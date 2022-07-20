@@ -16,9 +16,9 @@ class ClientLoginPage{
     public function post(){
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $password = hash("sha256",$password);
+        $hashPassword = hash("sha256",$password);
 
-        $client = \Model\Login::verify_client($username,$password);
+        $client = \Model\Login::verify_client($username,$hashPassword);
 
         //if client has not registered or if password/username is incorrect
         if($client == null){
@@ -29,7 +29,7 @@ class ClientLoginPage{
         //client gets logged in if credentials are correct
         else{
             $_SESSION["client_username"] = $username;
-            $_SESSION["client_password"] = $password;
+            $_SESSION["client_password"] = $hashPassword;
             $instance = new \Controller\ClientLoggedInPage();
             $instance->get();
         }

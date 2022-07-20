@@ -20,8 +20,8 @@ class DropBook{
             $instance->get();
         }
         //book is deleted if it exists
-        else if($data[0]["count"]>0){
-            $finalCount=$data[0]["count"]-1;
+        else if($data[\enum\constant::book]["count"]>0){
+            $finalCount=$data[\enum\constant::book]["count"]-1;
             \Model\Books::drop_book($finalCount,$title);
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();

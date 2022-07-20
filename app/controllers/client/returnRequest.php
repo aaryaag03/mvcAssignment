@@ -18,8 +18,8 @@ class ReturnRequest{
         $currentFees=\Model\Requests::return_request_current_fees($_SESSION['client_username']);
 
         $returnTime=time();
-        if($returnTime-$takeTime[0]["tt"]>60){
-            $finalFees = $currentFees[0]["fees"] + 10;
+        if($returnTime-$takeTime[\enum\constant::user]["tt"]>60){
+            $finalFees = $currentFees[\enum\constant::user]["fees"] + 10;
             \Model\Requests::return_request_final_fees($finalFees,$_SESSION['client_username']);
         }
 

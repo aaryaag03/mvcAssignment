@@ -15,7 +15,7 @@ class TakeRequest{
         $data=\Model\Books::is_book($_SESSION['client_username'],$title);
         if($data==null){
             $data=\Model\Books::is_book_in_library($title);
-            $finalCount=$data[0]["count"]-1;
+            $finalCount=$data[\enum\constant::book]["count"]-1;
 
             \Model\Requests::take_request_set_r($_SESSION['client_username'],$title);
             \Model\Requests::take_request_set_books($finalCount,$title);

@@ -15,7 +15,7 @@ class AddBook{
 
         //check if book is already in the library
         if($data!=null){
-            $finalCount=$data[0]["count"]+1;
+            $finalCount=$data[\enum\constant::book]["count"]+1;
             \Model\Books::add_book($finalCount,$title);
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();

@@ -3,7 +3,7 @@ body{
 }
 h1{
     font-family: 'Roboto', sans-serif;
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: center;            
 }  
 div{            
@@ -19,7 +19,8 @@ label{
     width: 240px;            
 }   
 .yo{
-    margin: 20px;            
+    margin: 20px 0px 20px 20px;
+    padding:2px 0px 2px 2px            
 }  
 .button{
     color: blanchedalmond;  
@@ -40,3 +41,36 @@ label{
 h3{
     text-align: center;
 }
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-top: 0;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color:blanchedalmond;
+    color: black;
+    text-align: center;
+    border-radius: 4px;
+    padding: 2px 0px;
+    position: absolute;
+    z-index: 1;
+    top: 22px;
+    left: 110%;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent blanchedalmond transparent transparent;
+  }
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

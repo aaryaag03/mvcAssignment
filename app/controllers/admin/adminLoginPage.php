@@ -16,9 +16,9 @@ class AdminLoginPage{
     public function post(){
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $password = hash("sha256",$password);
+        $hashPassword = hash("sha256",$password);
 
-        $admin = \Model\Login::verify_admin($username,$password);
+        $admin = \Model\Login::verify_admin($username,$hashPassword);
 
         if($admin == null){
             //if admin has not registered or if password/username is incorrect
@@ -28,7 +28,7 @@ class AdminLoginPage{
         else{
             //admin gets logged in if credentials are correct
             $_SESSION["admin_username"] = $username;
-            $_SESSION["admin_password"] = $password;
+            $_SESSION["admin_password"] = $hashPassword;
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

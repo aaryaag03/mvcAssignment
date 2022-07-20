@@ -12,18 +12,18 @@ class AdminRegisterPage{
     public function post(){
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $password1 = $_POST["password1"];
-
+        $confirmPassword = $_POST["confirmPassword"];
+    
         if($username==""){
             echo "<h3>USERNAME CANNOT BE EMPTY</h3>";
             echo \View\Loader::make()->render("templates/adminRegister.twig");
         }
-        else if($password==""){
-            echo "<h3>PASSWORD CANNOT BE EMPTY</h3>";
+        else if(strlen($password)<4){
+            echo "<h3>MINIMUM PASSWORD LENGTH IS 4</h3>";
             echo \View\Loader::make()->render("templates/adminRegister.twig");
         }
 
-        else if($password1 != $password ){
+        else if($confirmPassword != $password ){
             //if passwords are not identical
             echo "<h3>PASSWORDS NOT IDENTICAL</h3>";
             echo \View\Loader::make()->render("templates/adminRegister.twig");
@@ -39,8 +39,8 @@ class AdminRegisterPage{
             }
             //else request sent successfully
             else{
-                $password = hash("sha256",$password);
-                \Model\Requests::request_admin($username,$password);
+                $hashPassword = hash("sha256",$password);
+                \Model\Requests::request_admin($username,$hashPassword);
                 echo "<h3>REQUEST SENT</h3>";
                 echo \View\Loader::make()->render("templates/adminLogin.twig");
             }

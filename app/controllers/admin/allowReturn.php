@@ -14,7 +14,7 @@ class AllowReturn{
         $username=$_POST["username"];
 
         $data=\Model\Books::is_book_in_library($title);
-        $finalCount=$data[0]["count"]+1;
+        $finalCount=$data[\enum\constant::book]["count"]+1;
         \Model\Books::add_book($finalCount,$title);
         \Model\Requests::delete_request($username,$title);
         $instance = new \Controller\ViewRequests();
