@@ -10,12 +10,12 @@ if(!isset($_SESSION)){
 
 class ClientLoggedInPage{
     public function get(){
-        if (isset($_SESSION['c_username']) && isset($_SESSION['c_password'])) {
+        if (isset($_SESSION['client_username']) && isset($_SESSION['client_password'])) {
 
             echo \View\Loader::make()->render("templates/clientLoggedIn.twig", array(
 
             "book_list" => \Model\Books::book_list(),
-            "username"=>($_SESSION['c_username']),
+            "username"=>$_SESSION['client_username'],
             ));
         }
         else

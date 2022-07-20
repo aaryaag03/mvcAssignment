@@ -20,8 +20,15 @@ class DropBook{
             $instance->get();
         }
         //book is deleted if it exists
+        else if($data[0]["count"]>0){
+            $finalCount=$data[0]["count"]-1;
+            \Model\Books::drop_book($finalCount,$title);
+            $instance = new \Controller\AdminLoggedInPage();
+            $instance->get();
+        }
+    
         else{
-            \Model\Books::drop_book($title);
+            echo "<h3>book not in library<h3>";
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

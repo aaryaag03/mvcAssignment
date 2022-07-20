@@ -23,13 +23,13 @@ class ClientLoginPage{
         //if client has not registered or if password/username is incorrect
         if($client == null){
             
-            echo "<h3>YOU ARE NOT A CLIENT</h3>";
+            echo "<h3>INVALID USERNAME OR PASSWORD</h3>";
             echo \View\Loader::make()->render("templates/clientLogin.twig");
         }
         //client gets logged in if credentials are correct
         else{
-            $_SESSION["c_username"] = $username;
-            $_SESSION["c_password"] = $password;
+            $_SESSION["client_username"] = $username;
+            $_SESSION["client_password"] = $password;
             $instance = new \Controller\ClientLoggedInPage();
             $instance->get();
         }

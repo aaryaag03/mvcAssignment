@@ -22,13 +22,13 @@ class AdminLoginPage{
 
         if($admin == null){
             //if admin has not registered or if password/username is incorrect
-            echo "<h3>YOU ARE NOT AN ADMIN.</h3>";
+            echo "<h3>INVALID USERNAME OR PASSWORD</h3>";
             echo \View\Loader::make()->render("templates/adminLogin.twig");
         }
         else{
             //admin gets logged in if credentials are correct
-            $_SESSION["a_username"] = $username;
-            $_SESSION["a_password"] = $password;
+            $_SESSION["admin_username"] = $username;
+            $_SESSION["admin_password"] = $password;
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

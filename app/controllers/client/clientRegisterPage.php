@@ -14,7 +14,16 @@ class ClientRegisterPage{
         $password = $_POST["password"];
         $password1 = $_POST["password1"];
 
-        if($password1 != $password ){
+        if($username==""){
+            echo "<h3>USERNAME CANNOT BE EMPTY</h3>";
+            echo \View\Loader::make()->render("templates/clientRegister.twig");
+        }
+        else if($password==""){
+            echo "<h3>PASSWORD CANNOT BE EMPTY</h3>";
+            echo \View\Loader::make()->render("templates/clientRegister.twig");
+        }
+
+        else if($password1 != $password ){
             //if passwords are not identical
             echo "<h3>PASSWORDS NOT IDENTICAL</h3>";
             echo \View\Loader::make()->render("templates/clientRegister.twig");

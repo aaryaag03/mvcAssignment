@@ -12,7 +12,7 @@ class DenyAdmin{
     public function post(){
         $title=$_POST["title"];
         $username=$_POST["username"];
-        \Model\Requests::deny_admin($username,$title);
+        \Model\Requests::delete_request($username,$title);
         $instance = new \Controller\ViewRequests();
         $instance->post();
     }

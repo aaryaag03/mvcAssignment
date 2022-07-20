@@ -15,13 +15,14 @@ class AddBook{
 
         //check if book is already in the library
         if($data!=null){
-            echo " <h3>book already in library</h3>";
+            $finalCount=$data[0]["count"]+1;
+            \Model\Books::add_book($finalCount,$title);
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }
         //if not, book can be added by admin
         else{
-            \Model\Books::add_book($title);
+            \Model\Books::add_new_book($title);
             $instance = new \Controller\AdminLoggedInPage();
             $instance->get();
         }

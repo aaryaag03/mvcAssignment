@@ -14,11 +14,13 @@
     <table>
         {% for item in my_requests %}  
             <tr>
-                <td>{{ item.title }}</td>
+                
                 {% if item.c==0 %}
+                    <td>{{ item.title }}</td>
                     <td>Take request pending</td>
                 {% endif %} 
                 {% if item.c==1 %}
+                    <td>{{ item.title }}</td>
                     <td>Return request pending</td>
                 {% endif %}
             </tr>
