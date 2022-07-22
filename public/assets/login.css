@@ -1,3 +1,23 @@
+@keyframes disappear {
+    0% {
+        opacity: 0;
+        visibility: visible;
+    }
+    10%{
+        opacity: 1;
+        visibility: visible;
+    }
+    70%{
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+}
+
 body{
     background-color: cadetblue;
 }
@@ -7,7 +27,10 @@ h1{
     text-align: center;
 }
 h3{
+    visibility: hidden;
+    color: brown;
     text-align: center;
+    animation: disappear 3s;    
 }
 div{
     align-items: center;
@@ -32,7 +55,7 @@ label{
     font-size: 30px;
     height: 80px;
     text-align: center;
-    margin: 20px auto; 
+    margin: 20px auto 0px auto; 
     display:block;
     
 }

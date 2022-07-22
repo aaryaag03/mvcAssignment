@@ -17,13 +17,17 @@ class AdminLoginPage{
         $username = $_POST["username"];
         $password = $_POST["password"];
         $hashPassword = hash("sha256",$password);
+        $error="";
 
         $admin = \Model\Login::verify_admin($username,$hashPassword);
 
         if($admin == null){
             //if admin has not registered or if password/username is incorrect
-            echo "<h3>INVALID USERNAME OR PASSWORD</h3>";
-            echo \View\Loader::make()->render("templates/adminLogin.twig");
+            $error="INVALID USERNAME OR PASSWORD";
+            echo \View\Loader::make()->render("templates/adminLogin.twig", array(
+
+                "error"=> $error,
+                ));
         }
         else{
             //admin gets logged in if credentials are correct

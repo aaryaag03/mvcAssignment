@@ -5,7 +5,8 @@
 
 {% block css %} <link rel="stylesheet" href="/assets/register.css" />{% endblock %}
     
-{% block body %}  
+{% block body %} 
+    <h3>{{ error }}</h3>
     <h1>ENTER CLIENT DETAILS</h1>
     <div>
         <form action="/clientRegister" method="POST">
@@ -24,4 +25,7 @@
             <input type="submit" onclick="location.href='/';" value="Register" class="button"/>        
         </form>
     </div>
+    <form action="/" method="GET">
+            <input type="submit" value="Home" class="button"/>
+    </form>
 {% endblock %}

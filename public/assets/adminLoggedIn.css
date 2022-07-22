@@ -1,13 +1,11 @@
 h1{
     padding: 20px;
-    margin: 50px auto;
+    margin: 20px auto ;
     text-align: center;
     width: 500px;
     border: 2px solid black;
 }
-h3{
-    text-align: center;
-}
+
 body{
     background-color: cadetblue;
 }
@@ -15,7 +13,7 @@ body{
     font-size: 20px;
     height: 60px;
     width: 150px;
-    margin: 5px 10px;
+    margin: 0px 10px;
     background-color: cadetblue;
     border: 3px solid blanchedalmond;
     color: blanchedalmond;
@@ -44,7 +42,9 @@ label{
 }
 
 td{
+    padding: 0px 10px;
     font-size: 20px;
+    border: solid 2px;
 }
 
 #add{
@@ -57,3 +57,10 @@ td{
     color: black;
 }
 
+table{
+    margin: 0px auto 0px auto;
+    width: 50%;            
+    align-items: center;
+    border-collapse: collapse;
+    font-family: 'Roboto', sans-serif;
+}

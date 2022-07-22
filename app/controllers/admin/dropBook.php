@@ -13,11 +13,18 @@ class DropBook{
         $title=$_POST["bookname"];
         $data=\Model\Books::is_book_in_library($title);
 
+        $error="";
+
         //if the book does not exist in the library, it can't be deleted
         if($data==null){
-            echo "<h3>no such book<h3>";
-            $instance = new \Controller\AdminLoggedInPage();
-            $instance->get();
+            $error= "no such book";
+
+            echo \View\Loader::make()->render("templates/adminLoggedIn.twig", array(
+
+                "book_list" => \Model\Books::book_list(),
+                "username"=> ($_SESSION['admin_username']),
+                "error"=>$error,
+                ));
         }
         //book is deleted if it exists
         else if($data[\enum\constant::book]["count"]>0){
@@ -28,9 +35,13 @@ class DropBook{
         }
     
         else{
-            echo "<h3>book not in library<h3>";
-            $instance = new \Controller\AdminLoggedInPage();
-            $instance->get();
+            $error="book not in library";
+            echo \View\Loader::make()->render("templates/adminLoggedIn.twig", array(
+
+                "book_list" => \Model\Books::book_list(),
+                "username"=> ($_SESSION['admin_username']),
+                "error"=>$error,
+                ));
         }
     }
 }

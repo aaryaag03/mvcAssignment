@@ -1,10 +1,29 @@
+@keyframes disappear {
+    0% {
+        opacity: 0;
+        visibility: visible;
+    }
+    10%{
+        opacity: 1;
+        visibility: visible;
+    }
+    70%{
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+}
 body{
     background-color: cadetblue;
 }
 h1{
     font-family: 'Roboto', sans-serif;
     margin-top: 100px;
-    text-align: center;            
+    text-align: center;       
 }  
 div{            
     align-items: center;
@@ -30,7 +49,7 @@ label{
     height: 80px;  
     width: 300px;    
     text-align: center;
-    margin: 20px auto; 
+    margin: 20px auto 0px auto; 
     display:block;
 
 }        
@@ -39,7 +58,10 @@ label{
     color: black;
 }
 h3{
+    visibility: hidden;
+    color: brown;
     text-align: center;
+    animation: disappear 3s;    
 }
 .tooltip {
     position: relative;

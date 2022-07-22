@@ -1,4 +1,23 @@
-  body {
+@keyframes disappear {
+  0% {
+      opacity: 0;
+      visibility: visible;
+  }
+  10%{
+      opacity: 1;
+      visibility: visible;
+  }
+  70%{
+      opacity: 1;
+      visibility: visible;
+  }
+  100% {
+      visibility: hidden;
+      opacity: 0;
+  }
+  
+}
+body {
     font-family: "Lato", sans-serif;
   }
   
@@ -53,6 +72,10 @@
       padding:0px 20px;
       color:blanchedalmond;
   }
+
   h3{
+    visibility: hidden;
     text-align:center;
+    color:brown;
+    animation: disappear 3s;
   }

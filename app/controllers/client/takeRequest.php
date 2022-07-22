@@ -11,6 +11,7 @@ if(!isset($_SESSION)){
 class TakeRequest{
     public function post(){
         $title=$_POST["title"];
+        $error="";
         
         $data=\Model\Books::is_book($_SESSION['client_username'],$title);
         if($data==null){
@@ -23,9 +24,13 @@ class TakeRequest{
             $instance->get();
         }
         else{
-            echo "<h3>YOU ALREADY HAVE THIS BOOK</h3>";
-            $instance = new \Controller\ClientLoggedInPage();
-            $instance->get();
+            $error= "YOU ALREADY HAVE THIS BOOK";
+            echo \View\Loader::make()->render("templates/clientLoggedIn.twig", array(
+
+                "book_list" => \Model\Books::book_list(),
+                "username"=>$_SESSION['client_username'],
+                "error"=> $error,
+                ));
         }
     
     } 

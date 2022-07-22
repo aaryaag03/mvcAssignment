@@ -23,8 +23,11 @@ class ClientLoginPage{
         //if client has not registered or if password/username is incorrect
         if($client == null){
             
-            echo "<h3>INVALID USERNAME OR PASSWORD</h3>";
-            echo \View\Loader::make()->render("templates/clientLogin.twig");
+            $error= "INVALID USERNAME OR PASSWORD";
+            echo \View\Loader::make()->render("templates/clientLogin.twig", array(
+
+                "error"=> $error,
+                ));
         }
         //client gets logged in if credentials are correct
         else{

@@ -13,36 +13,52 @@ class AdminRegisterPage{
         $username = $_POST["username"];
         $password = $_POST["password"];
         $confirmPassword = $_POST["confirmPassword"];
+        $error="";
     
         if($username==""){
-            echo "<h3>USERNAME CANNOT BE EMPTY</h3>";
-            echo \View\Loader::make()->render("templates/adminRegister.twig");
+            $error= "USERNAME CANNOT BE EMPTY";
+            echo \View\Loader::make()->render("templates/adminRegister.twig", array(
+
+                "error"=> $error,
+                ));
         }
         else if(strlen($password)<4){
-            echo "<h3>MINIMUM PASSWORD LENGTH IS 4</h3>";
-            echo \View\Loader::make()->render("templates/adminRegister.twig");
+            $error= "MINIMUM PASSWORD LENGTH IS 4";
+            echo \View\Loader::make()->render("templates/adminRegister.twig", array(
+
+                "error"=> $error,
+                ));
         }
 
         else if($confirmPassword != $password ){
             //if passwords are not identical
-            echo "<h3>PASSWORDS NOT IDENTICAL</h3>";
-            echo \View\Loader::make()->render("templates/adminRegister.twig");
+            $error="PASSWORDS NOT IDENTICAL";
+            echo \View\Loader::make()->render("templates/adminRegister.twig", array(
+
+                "error"=> $error,
+                ));
         }
         else{
             $admin=\Model\Login::return_admin($username);
 
             //if username is already taken
             if($admin != null){
-                echo "<h3>USERNAME TAKEN</h3>";
-                echo \View\Loader::make()->render("templates/adminRegister.twig");
+                $error= "USERNAME TAKEN";
+                echo \View\Loader::make()->render("templates/adminRegister.twig", array(
+
+                    "error"=> $error,
+                    ));
 
             }
             //else request sent successfully
             else{
                 $hashPassword = hash("sha256",$password);
                 \Model\Requests::request_admin($username,$hashPassword);
-                echo "<h3>REQUEST SENT</h3>";
-                echo \View\Loader::make()->render("templates/adminLogin.twig");
+                $error= "REQUEST SENT";
+                echo \View\Loader::make()->render("templates/adminLogin.twig", array(
+
+                    "error"=> $error,
+                    ));
             }
         }
     }

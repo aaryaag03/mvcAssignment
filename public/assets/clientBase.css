@@ -1,3 +1,22 @@
+@keyframes disappear {
+    0% {
+        opacity: 0;
+        visibility: visible;
+    }
+    10%{
+        opacity: 1;
+        visibility: visible;
+    }
+    70%{
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+}
 body{
     font-family: "Lato", sans-serif;
 }
@@ -41,7 +60,7 @@ body{
 }
   
 table{
-      margin: 0px auto 40px auto;
+      margin: 0px auto 0px auto;
       width: 50%;            
       align-items: center;
       border-collapse: collapse;
@@ -64,5 +83,8 @@ h4{
 }
   
 h3{
+    visibility: hidden;
     text-align:center;
+    color: brown;
+    animation: disappear 3s;
 }
