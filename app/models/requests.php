@@ -5,7 +5,7 @@ namespace Model;
 class Requests{
     public static function my_requests($username) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT title,c from r where username = ?');
+        $stmt = $db->prepare('SELECT title,c from requests where username = ?');
         $stmt->execute([$username]);
         $rows = $stmt->fetchAll();
         return $rows;
@@ -15,13 +15,13 @@ class Requests{
 
     public static function request_admin($username,$password) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('INSERT into r values( ?, ?, 2)');
+        $stmt = $db->prepare('INSERT into requests values( ?, ?, 2)');
         $stmt->execute([$username , $password]);
     }
 
     public static function take_request_set_r($username,$title) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('INSERT into r values( ?, ?, 0)');
+        $stmt = $db->prepare('INSERT into requests values( ?, ?, 0)');
         $stmt->execute([$username , $title]);
     }
 
@@ -33,15 +33,9 @@ class Requests{
 
     public static function return_request_set_r($username,$title) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('UPDATE r SET c=1 where username=? and title=?');
+        $stmt = $db->prepare('UPDATE requests SET c=1 where username=? and title=?');
         $stmt->execute([$username , $title]);
     }
-
-    // public static function return_request_set_books($title) {
-    //     $db = \DB::get_instance();
-    //     $stmt = $db->prepare('UPDATE books SET username="" where title=?');
-    //     $stmt->execute([$title]);
-    // }
 
     public static function return_request_take_time($username,$title) {
         $db = \DB::get_instance();
@@ -73,7 +67,7 @@ class Requests{
 
     public static function show_take_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT username,title from r where c=0');
+        $stmt = $db->prepare('SELECT username,title from requests where c=0');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
@@ -81,7 +75,7 @@ class Requests{
 
     public static function show_return_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT username,title from r where c=1');
+        $stmt = $db->prepare('SELECT username,title from requests where c=1');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
@@ -89,19 +83,19 @@ class Requests{
 
     public static function show_admin_requests() {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT username,title from r where c=2');
+        $stmt = $db->prepare('SELECT username,title from requests where c=2');
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
     }
 
-    public function allow_take_deny_return($username,$title){
+    public static function allow_take_deny_return($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('UPDATE r SET c=3 where username=? and title=?');
+        $stmt = $db->prepare('UPDATE requests SET c=3 where username=? and title=?');
         $stmt->execute([$username,$title]); 
     }
 
-    public function allow_take_set_time($username,$title){
+    public static function allow_take_set_time($username,$title){
         $db = \DB::get_instance();
         $taketime=time();
         $stmt = $db->prepare('INSERT into dates SET username=?, title=?, tt=?');
@@ -109,15 +103,15 @@ class Requests{
 
     }
 
-    public function allow_admin($username,$title){
+    public static function allow_admin($username,$title){
         $db = \DB::get_instance();
         $stmt = $db->prepare('INSERT into admin values( ?, ?)');
         $stmt->execute([$username,$title]);    
     }   
 
-    public function delete_request($username,$title){
+    public static function delete_request($username,$title){
         $db = \DB::get_instance();
-        $stmt = $db->prepare('DELETE from r where username=? and title=?');
+        $stmt = $db->prepare('DELETE from requests where username=? and title=?');
         $stmt->execute([$username,$title]);  
     }
 }

@@ -5,7 +5,7 @@ namespace Model;
 class Books{
     public static function my_books($username) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT title from r where username = ? and c=3');
+        $stmt = $db->prepare('SELECT title from requests where username = ? and c=3');
         $stmt->execute([$username]);
         $rows = $stmt->fetchAll();
         return $rows;
@@ -13,7 +13,7 @@ class Books{
 
     public static function is_book($username,$title) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare('SELECT title from r where username = ? and title=?');
+        $stmt = $db->prepare('SELECT title from requests where username = ? and title=?');
         $stmt->execute([$username,$title]);
         $rows = $stmt->fetchAll();
         return $rows;
